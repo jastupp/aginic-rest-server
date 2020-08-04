@@ -8,11 +8,13 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/test', async (req, res) => {
+    console.log("In the test GET");
     const tests = await getTests();
     res.json(tests);
 });
 
 app.post('/test', async (req, res) => {
+    console.log("In the test POST");
     const result = await addTest(req.body);
     res.sendStatus(result.insertId > 0 ? 201 : 403);
 });
